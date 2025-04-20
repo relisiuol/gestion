@@ -123,21 +123,3 @@ jobs:
           asset_name: shasum.${{ env.APP_VERSION }}.txt
           tag: ${{ env.APP_VERSION }}
           overwrite: true
-
-      - name: Upload app to Nextcloud appstore
-        uses: nextcloud-releases/nextcloud-appstore-push-action@a011fe619bcf6e77ddebc96f9908e1af4071b9c1 # v1
-        with:
-          app_name: ${{ env.APP_NAME }}
-          appstore_token: ${{ secrets.APPSTORE_TOKEN }}
-          download_url: ${{ steps.attach_to_release.outputs.browser_download_url }}
-          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
-      - name: Twitter
-        uses: Eomm/why-don-t-you-tweet@v1
-        with:
-          tweet-message: "Nextcloud Gestion is here! Check the new release ${{ github.event.release.tag_name }}. Don't forget to clear your cache ;) #Nextcloud #release #opensource"
-        env:
-          TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
-          TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
-          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
