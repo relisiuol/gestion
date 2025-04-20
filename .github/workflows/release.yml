@@ -90,7 +90,7 @@ jobs:
       - name: Sign app
         run: |
           # Extracting release
-          cd ${{ env.APP_NAME }}/build/artifacts
+          cd build/artifacts
           tar -xvf ${{ env.APP_NAME }}.tar.gz
           cd ../../../
           # Setting up keys
